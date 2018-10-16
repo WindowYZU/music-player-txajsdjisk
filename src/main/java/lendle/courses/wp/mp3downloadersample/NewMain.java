@@ -10,6 +10,7 @@ import java.awt.FlowLayout;
 import java.awt.event.ActionListener;
 import java.io.File;
 import java.io.IOException;
+import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -67,10 +68,18 @@ public class NewMain {
                         @Override
                         public void totalBytesDownloaded(long bytes, boolean finished, boolean failed) {
                            //implement this
+                           double ratio=(bytes/FILE_SIZE)*100;
+                           progress.setProgress((int)ratio);
+                           if(finished){
+                               playFile(tempFile);
+                            }
+                           
                            ////////////////
-                        }
-                        protected double FILE_SIZE;
-                    });
+                        };
+                            
+                            
+                     
+                            };
 
                 } catch (Exception ex) {
                     Logger.getLogger(NewMain.class.getName()).log(Level.SEVERE, null, ex);
